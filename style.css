@@ -1,0 +1,258 @@
+/*---------------------------Login Page Start ------------------------------------ */
+body {
+    background: url(image/restaurant-interior_1127-3394.avif) no-repeat center center;
+    background-size: cover; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(116, 125, 140, 1.0);
+    font-family: Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container-login {
+    background-color: rgba(44, 62, 80, 1.0); 
+    border-radius: 20px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    padding: 40px;
+    width: 500px; 
+    text-align: center;
+}
+
+.logo img {
+    max-width: 100%; 
+    height: auto; 
+    margin-bottom: 30px; 
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form input {
+    padding: 15px; 
+    margin: 15px 0; 
+    border: 2px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 20px; 
+}
+
+.login-form button {
+    padding: 15px;
+    background-color: #4CAF50; 
+    color: white; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px; 
+    transition: background-color 0.3s; 
+}
+
+.login-form button:hover {
+    background-color: #45a049; 
+}
+
+
+@media (max-width: 600px) {
+    .container-login {
+        width: 90%; 
+    }
+}
+
+/*---------------------------Login Page End------------------------------------ */
+
+
+/* ----------------------------------------DashBoard------------------------- */
+#body {
+    background: url(image/restaurant-interior_1127-3394.avif) no-repeat center center;
+    background-size: cover; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    height:100vh;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.logo-section img {
+    width: 80px;
+    margin-right: 20px;
+}
+
+.logo-section h1 {
+    font-size: 40px;
+    color: black;
+}
+
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 200px);
+}
+
+.card {
+    background-color: #c9a0a1;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 40rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body button {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    background: linear-gradient(90deg, #ff5a5f, rgba(9, 132, 227, 1.0));
+}
+
+.card-body button:hover {
+    background-color: rgba(109, 51, 53, 0.9);
+}
+
+
+.back-btn {
+    margin-top: 20px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.back-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* ----------------------------ADD Customer---------------------- */
+.form-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-container h2 {
+    color: #ff5a5f;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn-submit {
+    color: black;
+    background-color: #5aff76;
+    border-color: #d27073;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: rgba(255, 90, 95, 0.9);
+}
+
+
+/* -----------------------------table----------------- */
+
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.customer-table {
+    width: 100%; 
+    max-width: 800px; 
+}
+
+.table {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+    background-color: #6f42c1; 
+    color: #ffffff;
+}
+
+.table tbody tr {
+    transition: background-color 0.3s; 
+}
+
+.table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.table th,
+.table td {
+    vertical-align: middle; 
+    text-align: center; 
+}
+
+.btn-actions {
+    display: flex; 
+    justify-content: center;
+    gap: 5px; 
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 50px;
+}
+
+.form-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Orders</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('images/background.jpg'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat; 
+            height: 100vh; 
+            margin: 0;
+        }
+
+        .content-background {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h4 {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="mt-5 content-background p-4">
+            <h4>Orders</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer Name</th>
+                            <th>Total Amount</th>
+                            <th>Items</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody"></tbody>
+                </table>
+            </div>
+            <button type="button" class="btn btn-warning btn-lg my-2" onclick="window.location.href='placeOrder.html';">
+                Back to Place Order
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadOrders();
+        });
+
+        function loadOrders() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const ordersTableBody = document.getElementById('ordersTableBody');
+
+            if (orders.length === 0) {
+                ordersTableBody.innerHTML = '<tr><td colspan="4" class="text-center">No orders found.</td></tr>';
+                return;
+            }
+
+            orders.forEach((order, index) => {
+                const itemsList = order.items.map(item => `Item Code: ${item.itemid}, Quantity: ${item.quantity}`).join('<br>');
+                const newRow = `
+                    <tr>
+                        <td>O${index + 1}</td>
+                        <td>${order.customer}</td>
+                        <td>${order.totalAmount}</td>
+                        <td>${itemsList}</td>
+                    </tr>
+                `;
+                ordersTableBody.insertAdjacentHTML('beforeend', newRow);
+            });
+        }
+    </script>
+</body>
+
+</html>

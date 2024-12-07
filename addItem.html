@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+        body {
+            background-image: url('images/background.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            height: 100vh; 
+            margin: 0;
+        }
+</style>
+
+<body>
+    <div class="header-container"></div>
+    <div class="logo-section text-center my-4">
+        <img src="images/logo.png" alt="Logo" width="100">
+        <h1 style="color: rgb(221, 183, 14);">MOS Burger</h1>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center text-white p-3" style="background-color: rgb(44, 102, 153);">Add New Item</h2>
+
+        <!-- Error message alert -->
+        <div id="errorMessage" class="alert alert-danger d-none" role="alert"></div>
+
+        <form id="addItemForm">
+            <div class="form-group">
+                <input type="text" class="form-control" id="itemCode" placeholder="Item Code" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="itemName" placeholder="Item Name" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" id="unitPrice" placeholder="Unit Price" required min="0" step="0.01">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" id="discountRate" placeholder="Discount Rate" min="0" max="100" step="0.01">
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Burgers">Burgers</option>
+                    <option value="Submarines">Submarines</option>
+                    <option value="Fries">Fries</option>
+                    <option value="Pasta">Pasta</option>
+                    <option value="Chicken">Chicken</option>
+                    <option value="Beverages">Beverages</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Item</button>
+            <button type="button" class="btn btn-warning my-2" onclick="history.back();">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('addItemForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const itemCode = document.getElementById('itemCode').value.trim();
+            const itemName = document.getElementById('itemName').value.trim();
+            const unitPrice = document.getElementById('unitPrice').value.trim();
+            const discountRate = document.getElementById('discountRate').value.trim() || '0';
+            const category = document.getElementById('category').value;
+
+            if (!itemCode || !itemName || !unitPrice || !category) {
+                showError('All fields are required. Please fill out all fields.');
+                return;
+            }
+
+            const newItem = {
+                itemCode,
+                itemName,
+                unitPrice: parseFloat(unitPrice).toFixed(2),
+                discountRate: parseFloat(discountRate).toFixed(2),
+                category
+            };
+
+            let inventoryItems = JSON.parse(localStorage.getItem('inventoryItems')) || [];
+
+            const isDuplicate = inventoryItems.some(item => item.itemCode === itemCode || item.itemName.toLowerCase() === itemName.toLowerCase());
+
+            if (isDuplicate) {
+                showError('Duplicate Item Code or Item Name. Please use unique values.');
+            } else {
+                inventoryItems.push(newItem);
+                localStorage.setItem('inventoryItems', JSON.stringify(inventoryItems));
+                alert('Item added successfully!');
+                document.getElementById('addItemForm').reset();
+                window.location.href = 'viewInventory.html'; 
+            }
+        });
+
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorMessage.classList.remove('d-none');
+            setTimeout(() => errorMessage.classList.add('d-none'), 3000);
+        }
+    </script>
+</body>
+
+</html>

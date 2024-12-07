@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Items</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('images/background.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            height: 100vh; 
+            margin: 0;
+        }
+        .content-background {
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .table {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #343a40;
+            color: white;
+        }
+
+        th,
+        td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table-danger {
+            background-color: #ffe5e5;
+        }
+
+        .table-secondary {
+            background-color: #e9ecef;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center align-items-center body-sub-background">
+            <div class="col-11 my-3 p-4 rounded-3 content-background">
+                <h1 class="text-center">Menu Items</h1>
+                <input type="text" id="searchInput" class="form-control my-3" placeholder="Search for items...">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Item Code</th>
+                                <th>Item Name</th>
+                                <th>Unit Price</th>
+                                <th>Discount Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTableBody">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th colspan="6">Burgers</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-danger" id="burgersbody">
+                                <tr>
+                                    <td>B1001</td>
+                                    <td>Classic Burger (Large)</td>
+                                   
+                                    <td>750.00</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>B1002</td>
+                                    <td>Classic Burger (Regular)</td>
+                                    <td>1500.00</td>
+                                    <td>15%</td>
+                                </tr>
+                            </tbody>
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th colspan="6">Submarines</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-danger" id="submarinesbody">
+                                <tr>
+                                    <td>B1016</td>
+                                    <td>Crispy Chicken Submarine (Large)</td>
+                                    <td>2000.00</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#inventoryTableBody tr');
+            rows.forEach(row => {
+                const itemName = row.cells[1].textContent.toLowerCase();
+                if (itemName.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
